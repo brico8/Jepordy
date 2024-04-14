@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeopardy Animation</title>
+    <link rel="stylesheet" href="test.css"> <!-- Corrected file name -->
+    <script type="text/javascript" src="JsFunction.js"></script> <!-- Corrected file name and removed unnecessary spaces -->
+</head>
+<body>
+
+<table class="table">
+    <!-- Category row -->
+    <tr class="category-row">
+        <th>Category 1</th>
+        <th>Category 2</th>
+        <th>Category 3</th>
+        <th>Category 4</th>
+        <th>Category 5</th>
+    </tr>
+
+    <!-- Price rows -->
+    <tr class="price-row">
+        <th><button onclick="PlayGame(100, 'Category 1')"> $100 </button></th>
+        <th><button onclick="PlayGame(100, 'Category 1')"> $200 </button></th>
+        <th><button onclick="PlayGame(100, 'Category 1')"> $300 <button></th>
+        <th><button onclick="PlayGame(100, 'Category 1')"> $400 <button> </th> 
+        <th><button onclick="PlayGame(100, 'Category 1')"> $500 </button></th>
+    </tr>
+    <tr class="price-row">
+        <th>$100</th>
+        <th>$200</th>
+        <th>$300</th>
+        <th>$400</th>
+        <th>$500</th>
+    </tr>
+    <tr class="price-row">
+        <th>$100</th>
+        <th>$200</th>
+        <th>$300</th>
+        <th>$400</th>
+        <th>$500</th>
+    </tr>
+    <tr class="price-row">
+        <th>$100</th>
+        <th>$200</th>
+        <th>$300</th>
+        <th>$400</th>
+        <th>$500</th>
+    </tr>
+    <tr class="price-row">
+        <th>$100</th>
+        <th>$200</th>
+        <th>$300</th>
+        <th>$400</th>
+        <th>$500</th>
+    </tr>
+</table>
+
+</body>
+</html>
+
+
+
+<!--
+
+    JS function 
+
+
+
+/*calculate age - not sure (get assistance )
+function age ()
+{
+    document.getElementById("pdob").addEventListener("change", function() {
+        var dob = new Date(this.value);
+        var today = new Date();
+        var age = Math.floor((today - dob) / (365.25 * 24 * 60 * 60 * 1000));
+        document.getElementById("age").value = age;
+    });
+    
+}
+*/ 
+
+
+var PlayersData = []; // global array
+
+
+
+
+// get information from form
+
+
+function Register() 
+{
+
+
+
+        var firstName = document.getElementById("fname").value;
+        var lastName = document.getElementById("lname").value;
+        var dob = document.getElementById("pdob").value;
+        var gender = document.querySelector('input[name="pgender"]:checked').value;
+        var town = document.getElementById("ptown").value;
+        var edLevel = document.getElementById("pedlevel").value;
+        var email = document.getElementById("pemail").value;
+        var image= document.getElementById("pimage").value;
+
+
+    
+
+        if (!email.endsWith("@SomeEmail.com")) 
+        {
+            alert("Email address must end with '@SomeEmail.com'.");
+            return;
+        }
+
+        // pushing information into player data
+        var playerData = ({
+            firstName: firstName,
+            lastName: lastName,
+            dob: dob,
+            gender: gender,
+            town: town,
+            edLevel: edLevel,
+            email: email,
+            image: image
+        });
+
+        // Adding information to  PlayersData
+        PlayersData.push(playerData);
+
+
+}
+
+
+
+
+
+function PlayGame(cost, category) {
+    switch (category) {
+        case 'Category 1':
+            CheckAnswer(cost);
+            break;
+        // Add cases for other categories if needed
+        default:
+            alert('Invalid category.');
+    }
+}
+
+function CheckAnswer(price) 
+{
+    if (price === 100) 
+    {
+        var answer = prompt("What is 1 + 1?");
+
+        var answer, correctAnswer, question;
+
+        // Start a timer for 60 seconds
+        var remainingTime = 60; // set to 60 seconds
+
+        if (price === 100) {
+            question = "What is 1 + 1?";
+            correctAnswer = "2";
+        } else if (price === 200) {
+            question = "What is 2 + 1?";
+            correctAnswer = "3";
+        }
+
+            // Prompt user with the question
+            answer = prompt(question);
+
+        var timer = setInterval(function()
+         {
+            remainingTime--; // decrement by 1 second
+            if (remainingTime <= 0) 
+            { // when times run out it reveals the answer --
+                clearInterval(timer);
+                alert("Time's up! The correct answer is " + correctAnswer + ".");
+            }
+        }, 1000); // Update timer every second
+
+
+        // Create and handle submit button
+        var submitAnswer = document.createElement("button");
+        submitAnswer.textContent = "Submit";
+        submitAnswer.onclick = function() 
+        {
+            clearInterval(timer); // Stop the timer
+            var userAnswer = prompt("Enter your answer:");
+            // Process the submitted answer
+            if (userAnswer === correctAnswer) {
+                alert("Correct!. The answer is " + correctAnswer);
+            } else {
+                alert("Incorrect. The correct answer is "+ correctAnswer);
+            }
+        };
+
+        document.body.appendChild(submitAnswer); // Add the submit button to the document body
+    }
+
+}
+-->
+
+
