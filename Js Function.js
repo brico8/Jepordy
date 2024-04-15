@@ -2,6 +2,7 @@ var PlayersData = []; // global array
 
 var playerBalance = 100; // Global variable to store player's balance
 
+
 // Calculate age function
 function calculateAge() {
     document.getElementById("pdob").addEventListener("change", function() {
@@ -12,6 +13,10 @@ function calculateAge() {
     });
 }
 
+
+// Task	2:	(7 marks)		
+//Create a JavaScript function called Register() that will accept the values entered in the fields listed in Task 1, validate all entries using JavaScript validations,
+// and then append the validated content to a global JavaScript array called PlayersData[]. 
 // Get information from form and register player
 function Register() {
     var firstName = document.getElementById("fname").value;
