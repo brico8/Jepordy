@@ -2,7 +2,6 @@ var PlayersData = []; // global array
 
 var playerBalance = 100; // Global variable to store player's balance
 
-
 // Calculate age function
 function calculateAge() {
     document.getElementById("pdob").addEventListener("change", function() {
@@ -13,11 +12,7 @@ function calculateAge() {
     });
 }
 
-// Task	2:(7 marks)		
-//Create a JavaScript function called Register() that will accept the values entered in the fields listed in Task 1, validate all entries using JavaScript validations,
-// and then append the validated content to a global JavaScript array called PlayersData[]. 
 // Get information from form and register player
-
 function Register() {
     var firstName = document.getElementById("fname").value;
 
@@ -55,13 +50,8 @@ function Register() {
     // Adding information to PlayersData
     PlayersData.push(playerData);
 }
-//Task	4:
-// Play the game Create a JavaScript function called PlayGame() that will: objective a-f
-//Task	5: (3 marks)		
-//Add another button, called Play to the entry form created in Task 1 and ensure that this button calls PlayGame() 
-//from Task 4 whenever it is clicked. When clicked, this button also enables the Play area along with the 
-//Player’s answer input, Answer and End Game button.  
 
+// Play the game
 function PlayGame(cost, category)
  {
     switch (category)
@@ -94,10 +84,6 @@ function PlayGame(cost, category)
 }
 
 // Check answer function
-//Task	6: (8 marks)	
-//Create a JavaScript function called CheckAnswer() that will check and validate the answer provided by the player.  
-//objective: a-b
-
 function CheckAnswer(cost, category) {
     var answer, correctAnswer, question;
     var remainingTime = 60; // set to 60 seconds
@@ -235,10 +221,6 @@ function CheckAnswer(cost, category) {
 
         }
     }, 1000); // Update timer every second
-   
-    //Task	7: (2 marks)		
- //Add another button, called Answer, to the play area created in Task 5 and ensure that this button calls 
-    //CheckAnswer() from Task 6 above.  
 
     // Create and handle submit button
     var submitAnswer = document.createElement("button");
@@ -261,12 +243,6 @@ function CheckAnswer(cost, category) {
 
     };
     document.body.appendChild(submitAnswer);
-
-    //Task	11: (3 marks)		
-//Add another button, called Quit to the entry form created in Task 1. 
-//When clicked, the End button also calls the findPercentageScore(). 
-    //Clear the form from Task 1 and enabled inputs, all buttons must be disabled except the Register button.
-   // Play and Results area are disabled.  
 
     // Create end game button
     var endGameButton = document.createElement("button");
@@ -325,11 +301,6 @@ function validateForm() {
     
     return true; // Allow form submission
 
-   // Task	10: (7 marks)		
-//Create a JavaScript function called findPercentageScore() that will calculate and display total number of questions, 
-    //the number of correct answers, the number of incorrect answers, the percentage score, and the player’s name, town, current date, in the ‘showpercentage’ textarea. 
-//You must always clear “showpercentage’” textarea before displaying all data in it.  
-
     function populatePercentage() {
         var playerName = document.getElementById('fname').value + " " + document.getElementById('lname').value;
         var correctAnswers = parseInt(document.getElementById('correctCount).value').value);
@@ -369,8 +340,7 @@ function validateForm() {
         // Enable Register button
         document.getElementById('register').disabled = false;
     }
-   // Task	12. (2	marks)	
-    //Task	13 (2	marks)	
+
     function showAll() {
         var showAllTextarea = document.getElementById('showallplayers');
         showAllTextarea.value = ""; // Clear the textarea
