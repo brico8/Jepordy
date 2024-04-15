@@ -55,8 +55,13 @@ function Register() {
     // Adding information to PlayersData
     PlayersData.push(playerData);
 }
+//Task	4:
+// Play the game Create a JavaScript function called PlayGame() that will: objective a-f
+//Task	5: (3 marks)		
+//Add another button, called Play to the entry form created in Task 1 and ensure that this button calls PlayGame() 
+//from Task 4 whenever it is clicked. When clicked, this button also enables the Play area along with the 
+//Player’s answer input, Answer and End Game button.  
 
-// Play the game
 function PlayGame(cost, category)
  {
     switch (category)
@@ -89,6 +94,9 @@ function PlayGame(cost, category)
 }
 
 // Check answer function
+//Task	6: (8 marks)	
+//Create a JavaScript function called CheckAnswer() that will check and validate the answer provided by the player.  
+//objective: a-b
 function CheckAnswer(cost, category) {
     var answer, correctAnswer, question;
     var remainingTime = 60; // set to 60 seconds
@@ -226,6 +234,9 @@ function CheckAnswer(cost, category) {
 
         }
     }, 1000); // Update timer every second
+    //Task	7: (2 marks)		
+Add //another button, called Answer, to the play area created in Task 5 and ensure that this button calls 
+    //CheckAnswer() from Task 6 above.  
 
     // Create and handle submit button
     var submitAnswer = document.createElement("button");
@@ -305,7 +316,7 @@ function validateForm() {
     // Other validation logic goes here
     
     return true; // Allow form submission
-
+     
     function populatePercentage() {
         var playerName = document.getElementById('fname').value + " " + document.getElementById('lname').value;
         var correctAnswers = parseInt(document.getElementById('correctCount).value').value);
