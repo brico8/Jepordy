@@ -260,6 +260,12 @@ Add //another button, called Answer, to the play area created in Task 5 and ensu
     };
     document.body.appendChild(submitAnswer);
 
+    //Task	11: (3 marks)		
+//Add another button, called Quit to the entry form created in Task 1. 
+//When clicked, the End button also calls the findPercentageScore(). 
+    //Clear the form from Task 1 and enabled inputs, all buttons must be disabled except the Register button.
+   // Play and Results area are disabled.  
+
     // Create end game button
     var endGameButton = document.createElement("button");
     endGameButton.textContent = "End Game";
@@ -316,7 +322,12 @@ function validateForm() {
     // Other validation logic goes here
     
     return true; // Allow form submission
-     
+
+   // Task	10: (7 marks)		
+//Create a JavaScript function called findPercentageScore() that will calculate and display total number of questions, 
+    //the number of correct answers, the number of incorrect answers, the percentage score, and the player’s name, town, current date, in the ‘showpercentage’ textarea. 
+//You must always clear “showpercentage’” textarea before displaying all data in it.  
+
     function populatePercentage() {
         var playerName = document.getElementById('fname').value + " " + document.getElementById('lname').value;
         var correctAnswers = parseInt(document.getElementById('correctCount).value').value);
