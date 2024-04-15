@@ -190,8 +190,6 @@ function CheckAnswer(cost, category) {
     default:
         alert('Invalid category.');
         return;
-
-
     }
     
     // Prompt user with the question
