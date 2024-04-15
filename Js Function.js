@@ -367,7 +367,8 @@ function validateForm() {
         // Enable Register button
         document.getElementById('register').disabled = false;
     }
-
+   // Task	12. (2	marks)	
+    //Task	13 (2	marks)	
     function showAll() {
         var showAllTextarea = document.getElementById('showallplayers');
         showAllTextarea.value = ""; // Clear the textarea
