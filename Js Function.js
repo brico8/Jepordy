@@ -13,7 +13,7 @@ function calculateAge() {
     });
 }
 
-// Task	2:	(7 marks)		
+// Task	2:(7 marks)		
 //Create a JavaScript function called Register() that will accept the values entered in the fields listed in Task 1, validate all entries using JavaScript validations,
 // and then append the validated content to a global JavaScript array called PlayersData[]. 
 // Get information from form and register player
@@ -235,6 +235,7 @@ function CheckAnswer(cost, category) {
 
         }
     }, 1000); // Update timer every second
+   
     //Task	7: (2 marks)		
  //Add another button, called Answer, to the play area created in Task 5 and ensure that this button calls 
     //CheckAnswer() from Task 6 above.  
