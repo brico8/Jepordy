@@ -198,6 +198,7 @@ function CheckAnswer(cost, category) {
     var timeDisplay = document.createElement("div");
     timeDisplay.textContent = "Time remaining: " + remainingTime + " seconds";
     document.body.appendChild(timeDisplay);
+        answer = prompt(question);
 
     // Start timer
     var timer = setInterval(function() 
