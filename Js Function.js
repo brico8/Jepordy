@@ -1,6 +1,9 @@
-var PlayersData = []; // global array
-
-var playerBalance = 100; // Global variable to store player's balance
+//NEW!!!!!!
+var gameData =
+{
+    PlayersData: [],
+    playerBalance: 100
+};
 
 // Calculate age function
 function calculateAge() {
@@ -30,13 +33,15 @@ function Register() {
 
     var image = document.getElementById("pimage").value;
 
-    if (!email.endsWith("@SomeEmail.com")) {
+    if (!email.endsWith("@SomeEmail.com")) 
+    {
         alert("Email address must end with '@SomeEmail.com'.");
         return;
     }
 
     // Pushing information into player data
-    var playerData = {
+    var playerData = 
+    {
         firstName: firstName,
         lastName: lastName,
         dob: dob,
@@ -51,9 +56,44 @@ function Register() {
     PlayersData.push(playerData);
 }
 
+
+
+
+
+////new
+// Function to check if all questions are answered for the category
+function checkAllQuestionsAnswered(category) {
+    var allQuestionsAnswered = true;
+    for (var i = 100; i <= 500; i += 100) {
+        var button = document.getElementById("b_" + i + "_" + category.toLowerCase().replace(" ", ""));
+        if (!button.disabled) {
+            allQuestionsAnswered = false;
+            break;
+        }
+    }
+    return allQuestionsAnswered;
+}
+
+// Function to check if all questions are answered for the category
+function checkAllQuestionsAnswered(category)
+ {
+    var allQuestionsAnswered = true;
+    for (var i = 100; i <= 500; i += 100) {
+        var button = document.getElementById("b_" + i + "_" + category.toLowerCase().replace(" ", ""));
+        if (!button.disabled) {
+            allQuestionsAnswered = false;
+            break;
+        }
+    }
+    return allQuestionsAnswered;
+}
+
+
+
 // Play the game
 function PlayGame(cost, category)
- {
+{
+    
     switch (category)
      {
         case 'Category 1':
@@ -84,11 +124,42 @@ function PlayGame(cost, category)
 }
 
 // Check answer function
-function CheckAnswer(cost, category) {
+function CheckAnswer(cost, category) 
+{
     var answer, correctAnswer, question;
     var remainingTime = 60; // set to 60 seconds
 
-        switch(category)
+
+//new
+
+    var isDailyDouble = false;
+    //if (dailyDoubleCounter <= 3) - not working hence the probablity // ensure the probability does surpass 3  //NEW!!!!!!
+    alert("Your current balance is $" + gameData.playerBalance);
+
+//new
+    // Check if this question is a Daily Double
+    if (Math.random() < 0.25) { // Adjust the probability as needed
+        var isDailyDouble = true;
+        dailyDoubleCounter++; // Increment the Daily Double counter
+    }
+
+    if (isDailyDouble)  //NEW!!!!!!
+    {
+        // Check if this question is a Daily Double
+        var wager = parseInt(prompt("This is a Daily Double! Please wager an amount between $0 and your current balance:", 0)); //isNaN(wager): This checks if wager is not a number.
+        if (isNaN(wager) || wager < 0 || wager > gameData.playerBalance) //his ensures that the wager is not negative & ensures that the wager doesn't exceed the player's current balance. If the wager is greater than the player's balance.
+         {
+            alert("Invalid wager. Please enter a valid amount.");
+            return;
+        }
+    }
+
+    //NEW!!!
+    // Store isDailyDouble value in a global variable for access in updateBalance
+    window.isDailyDouble = isDailyDouble;
+
+
+    switch(category)
 
     {
         // Set question and correct answer based on the cost
@@ -189,102 +260,119 @@ function CheckAnswer(cost, category) {
 
     default:
         alert('Invalid category.');
-        return;
-    }
-    
-    // Prompt user with the question
-
-    // Create element to display time remaining
-    var timeDisplay = document.createElement("div");
-    timeDisplay.textContent = "Time remaining: " + remainingTime + " seconds";
-    document.body.appendChild(timeDisplay);
+        return;      
+        
+    }  
+        // Prompt user with the question
         answer = prompt(question);
 
-    // Start timer
-    var timer = setInterval(function() 
-    {
-        remainingTime--; // decrement by 1 second
+        // Create element to display time remaining
+        var timeDisplay = document.createElement("div");
+        timeDisplay.textContent = "Time remaining: " + remainingTime + " seconds";
+        document.body.appendChild(timeDisplay);
 
-        timeDisplay.textContent = "Time remaining: " + remainingTime + " seconds"; // Update time remaining display
+        // Start timer
+        var timer = setInterval(function() 
+        {
+            remainingTime--; // decrement by 1 second
 
-        if (remainingTime <= 0) 
-        { // when times run out it reveals the answer --
-            clearInterval(timer);
+            timeDisplay.textContent = "Time remaining: " + remainingTime + " seconds"; // Update time remaining display
 
-            alert("Time's up! The correct answer is " + correctAnswer + ".");
+            if (remainingTime <= 0) 
+            { // when times run out it reveals the answer --
+                clearInterval(timer);
 
-            updateBalance(false, cost); // Deduct balance if time runs out
+                alert("Time's up! The correct answer is " + correctAnswer + ".");
+
+                updateBalance(false, cost); // Deduct balance if time runs out
+
+                document.body.removeChild(timeDisplay); // Remove time remaining display
+
+
+            }
+        }, 1000); // Update timer every second
+
+        // Create and handle submit button
+        var submitAnswer = document.createElement("button");
+
+        submitAnswer.textContent = "Answer";
+        submitAnswer.classList.add("submit.button"); // Add submit.button class to style the button
+        submitAnswer.onclick = function() 
+        {
+            clearInterval(timer); // Stop the timer
+            document.body.removeChild(timeDisplay); // Remove time remaining display
+            var userAnswer = prompt("Enter your answer:");
+            // Process the submitted answer
+            if (userAnswer === correctAnswer) {
+                alert("Correct!. The answer is " + correctAnswer);
+                updateBalance(true, cost); // Increase balance if answer is correct
+            } else {
+                alert("Incorrect. The correct answer is " + correctAnswer + ".");
+                updateBalance(false, cost); // Decrease balance if answer is incorrect
+            }
+        };
+
+
+
+        
+        // Create end game button
+        var endGameButton = document.createElement("button");
+        endGameButton.textContent = "End Game";
+        submitAnswer.classList.add("my-button"); // Add submit.button class to style the button
+        endGameButton.onclick = function() {
+            clearInterval(timer); // Stop the timer
 
             document.body.removeChild(timeDisplay); // Remove time remaining display
 
+            disableSubmitButton(); // Disable submit button
 
+            // Redirect to scores.html
+            window.location.href = "scores.html";
+        };
+
+        document.body.appendChild(submitAnswer); // Add the submit button to the document body
+        document.body.appendChild(endGameButton); // Add the end game button to the document body
+
+        // Function to disable the submit button after it's clicked
+        function disableSubmitButton() 
+        {
+            submitAnswer.disabled = true;
         }
-    }, 1000); // Update timer every second
-
-    // Create and handle submit button
-    var submitAnswer = document.createElement("button");
-
-    submitAnswer.textContent = "Answer";
-    submitAnswer.classList.add("submit.button"); // Add submit.button class to style the button
-    submitAnswer.onclick = function() 
-    {
-        clearInterval(timer); // Stop the timer
-        document.body.removeChild(timeDisplay); // Remove time remaining display
-        var userAnswer = prompt(question);
-        // Process the submitted answer
-        if (userAnswer === correctAnswer) {
-            alert("Correct!. The answer is " + correctAnswer);
-            updateBalance(true, cost); // Increase balance if answer is correct
-        } else {
-            alert("Incorrect. The correct answer is " + correctAnswer + ".");
-            updateBalance(false, cost); // Decrease balance if answer is incorrect
-        }
-
-    };
-    document.body.appendChild(submitAnswer);
-
-    // Create end game button
-    var endGameButton = document.createElement("button");
-    endGameButton.textContent = "End Game";
-    submitAnswer.classList.add("my-button"); // Add submit.button class to style the button
-    endGameButton.onclick = function() {
-        clearInterval(timer); // Stop the timer
-
-        document.body.removeChild(timeDisplay); // Remove time remaining display
-
-        disableSubmitButton(); // Disable submit button
-
-
-        // Redirect to scores.html
-        window.location.href = "scores.html";
-    };
-
-    document.body.appendChild(endGameButton); // Add the end game button to the document body
-
-    // Function to disable the submit button after it's clicked
-    function disableSubmitButton() 
-    {
-        submitAnswer.disabled = true;
-    }
-
-   
-
+    
 }
-
-// Function to update player's balance
+// Function to update player's balance -Adjusted to support daily double --- //NEW!!!!!!
 function updateBalance(isCorrect, cost) {
-    if (isCorrect) {
-        playerBalance += cost; // Increase balance if answer is correct
-    } else {
-        playerBalance -= cost; // Decrease balance if answer is incorrect
-    }
-    alert("Your current balance is $" + playerBalance);
-}
+    var isDailyDouble = window.isDailyDouble || false; // Default to false if isDailyDouble is not set
 
+    if (isCorrect) 
+    {
+        if (isDailyDouble) 
+        {
+            var wager = parseInt(prompt("You answered correctly! Your wagered amount will be added to your balance.", 0));
+            gameData.playerBalance += wager;
+        } else 
+        {
+            gameData.playerBalance += cost;
+        }
+        alert("Correct!. Your current balance is $" + gameData.playerBalance);
+    } else 
+    {
+        if (isDailyDouble)
+        {
+            var wager = parseInt(prompt("You answered incorrectly! Your wagered amount will be deducted from your balance.", 0));
+            gameData.playerBalance -= wager;
+        } else 
+        {
+            gameData.playerBalance -= cost;
+        }
+        alert("Incorrect. Your current balance is $" + gameData.playerBalance);
+    }
+}
 
 // form
 
-function validateForm() {
+function validateForm() 
+{
     var fname = document.getElementById('fname').value;
     var lname = document.getElementById('lname').value;
     // Add similar code to validate other form fields
@@ -299,59 +387,95 @@ function validateForm() {
     // Other validation logic goes here
     
     return true; // Allow form submission
-
-    function populatePercentage() {
-        var playerName = document.getElementById('fname').value + " " + document.getElementById('lname').value;
-        var correctAnswers = parseInt(document.getElementById('correctCount).value').value);
-        var totalQuestions = parseInt(document.getElementById('totalQuestions').value);
-    
-        var percentage = ((correctAnswers / totalQuestions) * 100).toFixed(2);
-    
-        var result = playerName + ',' + percentage + '%,' + correctCount + ',' + incorrectCount + ',' + totalQuestions;
-    
-        var showPercentageTextarea = document.getElementById('showpercentage');
-        showPercentageTextarea.value = result;
-        var percentage = ((correctAnswers / totalQuestions) * 100).toFixed(2);
-
-        // Get current date
-        var currentDate = new Date().toLocaleDateString();
-
-        // Construct the result string
-        var result = "Player's Name: " +firstName + "\n";
-        result += "Town: " + town + "\n";
-        result += "Date: " + currentDate + "\n";
-        result += "Total Questions: " + totalQuestions + "\n";
-        result += "Correct Answers: " + 'correctCount'+ "\n";
-        result += "Incorrect Answers: " + incorrectCount + "\n";
-        result += "Percentage Score: " + percentage + "%";
-
-        // Clear and update the textarea
-        var showPercentageTextarea = document.getElementById('showpercentage');
-        showPercentageTextarea.value = result;
-    }
-
-    function quitAndClear() {
-        findPercentageScore(); // Call findPercentageScore() as required
-        clearForm(); // Clear the form
-        // Disable all buttons except Register
-        document.getElementById('findScore').disabled = true;
-        document.getElementById('quit').disabled = true;
-        // Enable Register button
-        document.getElementById('register').disabled = false;
-    }
-
-    function showAll() {
-        var showAllTextarea = document.getElementById('showallplayers');
-        showAllTextarea.value = ""; // Clear the textarea
-    
-        for (var i = 0; i < playerData.length; i++) {
-            var player = playerData[i];
-            showAllTextarea.value += "Player's Name: " + player.fname + ", Town: " + player.town + ", Total Questions: " + player.totalQuestions + ", Correct Answers: " + player.correctCount + ", Incorrect Answers: " + player.incorrectCount + ", Percentage Score: " + player.percentage + "%\n";
-        }
-    }
-
-
-
-
-
 }
+
+// Function to handle Final Jeopardy round
+function FinalJeopardy() {
+    // Randomly select a category
+    var categories = ['Category 1', 'Category 2', 'Category 3', 'Category 4', 'Category 5'];
+    var finalCategory = categories[Math.floor(Math.random() * categories.length)];
+    
+    // Prompt player for wager
+    var wager = parseInt(prompt("Final Jeopardy! Category: " + finalCategory + ". Please enter your wager (between $0 and $" + gameData.playerBalance + "):", 0));
+    if (isNaN(wager) || wager < 0 || wager > gameData.playerBalance) {
+        alert("Invalid wager. Please enter a valid amount.");
+        return;
+    }
+
+    // Present Final Jeopardy question
+    var finalQuestion = "Final Jeopardy Question: [Your Final Jeopardy question here]";
+    var playerResponse = prompt(finalQuestion);
+
+    // Timer for response
+    var remainingTime = 60;
+    var timer = setInterval(function() {
+        remainingTime--;
+        if (remainingTime <= 0) {
+            clearInterval(timer);
+            alert("Time's up! The correct answer was [Correct answer]. You wagered $" + wager + ". Your total remains unchanged.");
+        }
+    }, 1000);
+
+    // Handle player's response
+    var isCorrect = (playerResponse.trim() === "[Correct answer]"); // Replace [Correct answer] with the actual correct answer
+    if (isCorrect) {
+        gameData.playerBalance += wager;
+        alert("Congratulations! You answered correctly. $" + wager + " has been added to your total balance. Your current balance is $" + gameData.playerBalance);
+    } else {
+        gameData.playerBalance -= wager;
+        alert("Incorrect. $" + wager + " has been deducted from your total balance. Your current balance is $" + gameData.playerBalance);
+    }
+}
+
+
+///NEW FUNCTIONS
+
+// Function to handle Final Jeopardy round
+
+function FinalJeopardy() {
+    // Randomly select a category
+    var categories = ['Category 1', 'Category 2', 'Category 3', 'Category 4', 'Category 5'];
+    var finalCategory = categories[Math.floor(Math.random() * categories.length)];
+
+    // Prompt player for wager
+    var wager = parseInt(prompt("Final Jeopardy! Category: " + finalCategory + ". Please enter your wager (between $0 and $" + gameData.playerBalance + "):", 0));
+    if (isNaN(wager) || wager < 0 || wager > gameData.playerBalance) {
+        alert("Invalid wager. Please enter a valid amount.");
+        return;
+    }
+
+    // Present Final Jeopardy question
+    var finalQuestion = "Final Jeopardy Question: which year was jeopardy invented?";
+    var playerResponse = prompt(finalQuestion);
+
+    // Timer for response
+    var remainingTime = 60;
+    var timer = setInterval(function() {
+        remainingTime--;
+        if (remainingTime <= 0) {
+            clearInterval(timer);
+            alert("Time's up! The correct answer was [Correct answer]. You wagered $" + wager + ". Your total remains unchanged.");
+        }
+    }, 1000);
+
+    // Handle player's response
+    var isCorrect = (playerResponse.trim() === "1964"); // Replace [Correct answer] with the actual correct answer
+    if (isCorrect) {
+        gameData.playerBalance += wager;
+        alert("Congratulations! You answered correctly. $" + wager + " has been added to your total balance. Your current balance is $" + gameData.playerBalance);
+    } else {
+        gameData.playerBalance -= wager;
+        alert("Incorrect. $" + wager + " has been deducted from your total balance. Your current balance is $" + gameData.playerBalance);
+    }
+}
+
+// Call Final Jeopardy function when the user successfully completes Level 1
+function Level1Completed() 
+{
+    // Your existing Level 1 completion logic here
+    // After completing Level 1, prompt the player if they want to play Final Jeopardy
+    var playFinalJeopardy = confirm("Congratulations! You have completed Level 1. Do you want to play Final Jeopardy?");
+    if (playFinalJeopardy) {
+        FinalJeopardy();
+    }
+}   
