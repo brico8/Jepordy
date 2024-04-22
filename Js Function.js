@@ -327,7 +327,7 @@ function CheckAnswer(cost, category)
             disableSubmitButton(); // Disable submit button
 
             // Redirect to scores.html
-            window.location.href = "scores.html";
+            window.location.href = "./scores.html";
         };
 
         document.body.appendChild(submitAnswer); // Add the submit button to the document body
