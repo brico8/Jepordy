@@ -1,0 +1,113 @@
+<!DOCTYPE html>  <!--The doctype statement indicates the markup language of the document-->
+<html>
+	<head> <!--The head element provides information and instructions to the browser about the document. -->
+    	
+	    <title> Jeopardy - Registration </title>
+        <link rel="stylesheet" href="Jeopardy.css"/>  <!-- Call css-->
+
+        <script type="text/javascript" src="Js Function.js"> // calling function   
+        
+        
+        
+        </script>
+
+    </head>
+
+
+
+    <body> 
+
+
+        <!-- <form name="register" action = "game.html" method="post">--> 
+        <form name="register" action="game.html" method="post" onsubmit="return validateForm()">
+
+            
+            <fieldset>
+                <legend>Register  New Player</legend>
+
+                <label> First Name  </label>
+                <input type="text"  id="fname" name = "fname"  minlength="3"  required /> </br> </br>
+
+
+                <label> Last Name  </label>
+                <input type="text"  id="lname" name = "lname"  minlength="3"  required /> </br> </br>
+
+                <!-- <div>
+                    <label> Date  of Birth</label>
+                    <input type="date" id="pdob" name = "pdob"  value="" min="2012-01-01"/> </br> </br> --Age must be greater than 12  years old.
+                </div -->
+
+
+                <label> Date  of Birth</label>
+                <input type="date" id="pdob" name = "pdob"> </br> </br>
+
+                <!-- Learn how to do-->
+
+                <label> Gender </label>
+                <input type="radio" id="male" name = "pgender" value="male" checked/> Male  
+                <input type="radio"  id="female" name = "pgender" value="female" /> Female  </br> </br>
+
+
+
+
+                <label> Town </label>
+                <input type="text" id="ptown" name="ptown" required> </br> </br>
+
+        
+
+                <label> Educational Level  </label>
+                <select name="pedlevel" id="pedlevel">
+                    <option>  </option>
+                        <option> Primary School	</option>
+                            <option> Secondary School</option> 
+                                <option> Secondary School Lower & Upper 6th </option>
+                                    <option> Tertiary -  Bachelor's </option>
+                                        <option> Tertiary - Master's</option>
+                                            <option> Tertiary - Doctorate </option>
+
+                </select> </br> </br>
+
+                <label for="pemail">Email Address</label>
+                <input type="email" id="pemail" name="pemail" pattern="^[a-zA-Z0-9._%+-]+@SomeEmail\.com$" placeholder="only @SomeEmail.com" required><br><br> 
+                <!-- may put a if statement if this doesnt work , then use the above select option. -->
+                
+
+                <label for="image">Image of Self</label>
+                <input type="file" id="pimage" name="pimage">
+
+                </br> </br>
+            
+            </fieldset>
+
+                </br> </br>
+                
+              
+                <input type="submit" value="register">
+
+                
+                <input type="reset" value="Clear">
+
+                <input type="button" id="quit" onclick="quitAndClear()" value="Quit" disabled>
+
+             
+
+
+    
+        </form>
+   </body>
+
+
+
+   <!---
+   For this game the user will be playing solo.  At the start of the game, the player’s total is $100  The user interface must be organized into 3 sections: (1) Registration, (2) Play, and (3) Results areas.  
+ 
+   Task	1:	(6 marks)		
+   Create a new HTML page called index.html. There is to be a form on the web page with the following fields for entering information on each player: Player’s First and Last Name, DOB, Email, Age, Gender, Address (street, city, town, country), educational level and image of self. 
+   i)	Player’s name, DOB, Gender, town and educational level are required values.  
+   ii)	Age must be calculated by the system from date of birth and must be greater than 12. 
+   iii) First names must be more than three (3) characters in length.  
+   iv) Email address must be validated to only accept email addresses that end with “@SomeEmail.com”.  
+   -->
+
+</html>
+ 
