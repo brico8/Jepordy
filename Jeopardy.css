@@ -1,0 +1,137 @@
+/* File name that will link to html
+
+*/ 
+.startAnimation {
+    font-size: 48px;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: absolute; /* This property is used to specify the positioning scheme for the element.*/
+    top: 50%; /* his property sets the top offset of the element from its containing block. In this case, it positions the element so that its top edge is vertically centered at 50% of the height of its containing block.*/ 
+    left: 50%; /* This property sets the left offset of the element from its containing block. It positions the element so that its left edge is horizontally centered at 50% of the width of its containing block.*/ 
+    transform: translate(-50%, -50%);  /*centers the element both horizontally and vertically within its container, regardless of its size.*/
+    animation: textAnimation 4s infinite, bounceAnimation 4s infinite alternate;
+}
+
+/* Colors of the text animation*/
+@keyframes textAnimation {
+    0% {
+        color: red;
+    }
+    25% {
+        color: yellow;
+    }
+    50% {
+        color: rgb(191, 0, 255);
+    }
+    75% {
+        color: green;
+    }
+    100% {
+        color: rgb(0, 255, 242);
+    }
+}
+
+/* adjusting Bouncing effect 
+
+The  transform CSS property is used to modify the visual rendering of an element.
+It allows you to apply various types of transformations such as scaling,
+rotating, skewing, and translating (moving) elements in 2D or 3D space.
+
+*/
+@keyframes bounceAnimation {
+    0%, 100% {
+        transform: translate(-50%, -50%);
+    }
+    50% {
+        transform: translate(-50%, -60%);
+    }
+}
+
+/* Page color */
+body{background-color: rgb(80, 147, 255)}
+
+/* button on start up page*/
+button {
+    font-size: 24px;
+    background-color: transparent; /* Change the button background color */
+    color: black; /* Change the button text color */
+    border: none; /* Remove default button border */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+
+/* button on start up page*/
+button.answer-button {
+    font-size: 24px; /* Increase font size as needed */
+    position: fixed;
+    bottom: 20px; /* Adjust vertical position from bottom */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+.table
+{
+    border-collapse:collapse;
+    width: 100%;
+}
+
+.category-row th, .price-row td 
+{
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 10px;
+}
+
+
+.category-row th 
+{
+  background-color: purple;
+  color: white;
+}
+
+.price-row:nth-child(even)  /*All even row will be colored with #CBC3E3 */
+ {
+    background-color: #CBC3E3;
+}
+  
+
+  .price-row:nth-child(odd) /*All even row will be colored with white;*/
+  {
+    background-color: white;
+  }
+
+
+
+  .tutorial-button {
+    background-color: #007bff; /* Blue background color */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    padding: 10px 20px; /* Padding around text */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Cursor style */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* Remove default link underline */
+}
+
+.tutorial-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+
+/* Style the container of the bar chart */
+.chart-container {
+    width: 400px;
+    margin: 50px auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+/* Style the bars */
+.bar {
+    background-color: #007bff; /* Blue color for bars */
+    margin-bottom: 10px;
+    color: white;
+    text-align: center;
+    padding: 5px;
+}

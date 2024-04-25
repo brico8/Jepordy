@@ -1,0 +1,92 @@
+<!DOCTYPE html>  <!--The doctype statement indicates the markup language of the document-->
+<html>
+	<head> <!--The head element provides information and instructions to the browser about the document. -->
+    	<meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <title> Jeopardy - Game </title>
+        <link rel="stylesheet" href="Jeopardy.css"/>  <!-- Call css-->
+
+        <script type="text/javascript" src="Js Function.js"> // calling function   
+        
+        
+        </script>
+
+    </head>
+
+    <body>
+
+        <table class="table"> <!-- border-collapse: collapse; border="1" align="center" width="40%" height="40"--> <!-- reduce space between row and columns-->
+        <!-- 1st row  starts here -->
+
+            <tr class="category-row">                 <!--<tr bgcolor="purple" align="center"> -->
+                <th> Category 1 </th>  <!-- find a way to color the response -->
+                <th> Category 2 </th>
+                <th> Category 3 </th>
+                <th> Category 4 </th>
+                <th> Category 5 </th>
+            </tr>
+            <!--Fixed DIsabling -->
+            <tr class="price-row">     <!-- calling price-first First odd from jeopardy.css --> <!--tr bgcolor="#CBC3E3" align="center"-->
+           
+                <th><button id="b_100_c1" onclick="PlayGame(100, 'Category 1')"> $100 </button></th>
+                <th><button id="b_100_c2" onclick="PlayGame(100, 'Category 2')"> $100 </button></th>
+                <th><button id="b_100_c3" onclick="PlayGame(100, 'Category 3')"> $100 </button></th>
+                <th><button id="b_100_c4" onclick="PlayGame(100, 'Category 4')"> $100 </button></th>
+                <th><button id="b_100_c5" onclick="PlayGame(100, 'Category 5')"> $100 </button></th>
+ 
+            </tr>
+
+            <tr class="price-row">  <!-- calling price-first First even from jepordy.css-->  <!-- bgcolor="white" align="center"-->
+           
+                <th><button id="b_200_c1" onclick="PlayGame(200, 'Category 1')"> $200 </button></th>
+                <th><button id="b_200_c2" onclick="PlayGame(200, 'Category 2')"> $200 </button></th>
+                <th><button id="b_200_c3" onclick="PlayGame(200, 'Category 3')"> $200 </button></th>
+                <th><button id="b_200_c4" onclick="PlayGame(200, 'Category 4')"> $200 </button></th>
+                <th><button id="b_200_c5" onclick="PlayGame(200, 'Category 5')"> $200 </button></th>
+
+            </tr>
+
+            <tr class="price-row"> <!-- bgcolor="#CBC3E3" align="center"-->
+           
+                <th><button id="b_300_c1" onclick="PlayGame(300, 'Category 1')"> $300 </button></th>
+                <th><button id="b_300_c2" onclick="PlayGame(300, 'Category 2')"> $300 </button></th>
+                <th><button id="b_300_c3" onclick="PlayGame(300, 'Category 3')"> $300 </button></th>
+                <th><button id="b_300_c4" onclick="PlayGame(300, 'Category 4')"> $300 </button></th>
+                <th><button id="b_300_c5" onclick="PlayGame(300, 'Category 5')"> $300 </button></th>
+
+            </tr>
+
+            <tr class="price-row"> <!-- bgcolor="white" align="center"-->
+           
+           
+                <th><button id="b_400_c1" onclick="PlayGame(400, 'Category 1')"> $400 </button></th>
+                <th><button id="b_400_c2" onclick="PlayGame(400, 'Category 2')"> $400 </button></th>
+                <th><button id="b_400_c3" onclick="PlayGame(400, 'Category 3')"> $400 </button></th>
+                <th><button id="b_400_c4" onclick="PlayGame(400, 'Category 4')"> $400 </button></th>
+                <th><button id="b_400_c5" onclick="PlayGame(400, 'Category 5')"> $400 </button></th>
+
+            </tr>
+
+     
+            <tr class="price-row"><!-- bgcolor="#CBC3E3" align="center"-->
+               
+                <th><button id="b_500_c1" onclick="PlayGame(150, 'Category 1')"> $500 </button></th>
+                <th><button id="b_500_c2" onclick="PlayGame(500, 'Category 2')"> $500 </button></th>
+                <th><button id="b_500_c3" onclick="PlayGame(500, 'Category 3')"> $500 </button></th>
+                <th><button id="b_500_c4" onclick="PlayGame(500, 'Category 4')"> $500 </button></th>
+                <th><button id="b_500_c4" onclick="PlayGame(500, 'Category 5')"> $500 </button></th>
+
+            </tr>
+        
+        
+
+        </table>
+
+
+
+    </body>
+
+  
+
+
+</html>
