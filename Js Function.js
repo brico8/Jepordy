@@ -712,7 +712,7 @@ document.getElementById("resultsBtn").addEventListener("click", function() {
 // Call Final Jeopardy function when the user successfully completes  the game
 function completedlevel() 
 
-    // After completing Level 1, prompt the player if they want to play Final Jeopardy
+    // After completing the game, prompt the player if they want to play Final Jeopardy
     var playFinalJeopardy = confirm("Congratulations! You have completed Level 1. Do you want to play Final Jeopardy?");
     if (playFinalJeopardy) 
     {
