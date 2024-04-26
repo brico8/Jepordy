@@ -173,7 +173,7 @@ function CheckAnswer(cost, category)
     alert("Your current balance is $" + gameData.playerBalance);
 
     // Check if this question is a Daily Double
-    if (Math.random() < 0.25) 
+    if (Math.random() < 0.12) 
     { // Adjust the probability as needed
         isDailyDouble = true;
         // Increment the Daily Double counter if needed
