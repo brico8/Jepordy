@@ -58,9 +58,8 @@ function findPercentageScore() {
     // Calculate percentage score
     var percentageScore = (correctAnswers / totalQuestions) * 100;
     
-    // Retrieve player's name and town (assuming they are stored in gameData.playerInfo)
-    var playerName = gameData.playerInfo[gameData.playerInfo.length - 1].firstName; // Assuming the last player's data is the current one
-    var playerTown = gameData.playerInfo[gameData.playerInfo.length - 1].town; // Assuming the last player's data is the current one
+    var playerName = gameData.playerInfo[gameData.playerInfo.length - 1].firstName; 
+    var playerTown = gameData.playerInfo[gameData.playerInfo.length - 1].town; 
     
     // Get the current date
     var currentDate = new Date().toLocaleDateString();
@@ -460,7 +459,7 @@ function validateForm()
 {
     var fname = document.getElementById('fname').value;
     var lname = document.getElementById('lname').value;
-    // Add similar code to validate other form fields
+    
 
     // Example validation: Check if first name and last name are not empty
     if (fname === '' || lname === '') 
@@ -496,9 +495,8 @@ function findPercentageScore()
     // Calculate percentage score
     var percentageScore = (correctAnswers / totalQuestions) * 100;
     
-    // Retrieve player's name and town (assuming they are stored in gameData.playerInfo)
-    var playerName = gameData.playerInfo[gameData.playerInfo.length - 1].firstName; // Assuming the last player's data is the current one
-    var playerTown = gameData.playerInfo[gameData.playerInfo.length - 1].town; // Assuming the last player's data is the current one
+    var playerName = gameData.playerInfo[gameData.playerInfo.length - 1].firstName; 
+    var playerTown = gameData.playerInfo[gameData.playerInfo.length - 1].town; 
     
     // Get the current date
     var currentDate = new Date().toLocaleDateString();
@@ -549,12 +547,11 @@ function disableButtons() {
 
 // Function to disable the Play and Results areas
 function disablePlayResultsArea() {
-    // Assuming 'play' and 'results' are div elements, you can disable them by adding 'disabled' class
     document.getElementById('play').classList.add('disabled');
     document.getElementById('results').classList.add('disabled');
 }
 
-// Event listener for Quit button
+//Quit button
 document.getElementById('quit').addEventListener('click', quitGame);
 // Function to list all entered persons
 function listAllPlayers() {
@@ -707,15 +704,14 @@ function FinalJeopardy()
     }
 }
 
-// Add an event listener to the Results button
+// Results button
 document.getElementById("resultsBtn").addEventListener("click", function() {
     findPercentageScore();
 });
 
-// Call Final Jeopardy function when the user successfully completes Level 1
+// Call Final Jeopardy function when the user successfully completes  the game
 function completedlevel() 
-{
-    // Your existing Level 1 completion logic here
+
     // After completing Level 1, prompt the player if they want to play Final Jeopardy
     var playFinalJeopardy = confirm("Congratulations! You have completed Level 1. Do you want to play Final Jeopardy?");
     if (playFinalJeopardy) 
